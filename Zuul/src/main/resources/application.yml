@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: zuul
+
+server:
+  port: 8000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+zuul:
+  sensitive-headers: Cookie
+  prefix: /api
+  routes:
+    usuario:
+      path: /usuario/**
+      serviceId: usuario
+      strip-prefix: false
+    produto:
+      path: /produto/**
+      serviceId: produto
+      strip-prefix: false
+    security:
+      path: /**
+      serviceId: security
+      string-prefix: false
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

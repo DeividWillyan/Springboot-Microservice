@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: security
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservice?allowPublicKeyRetrieval=true&sslMode=DISABLED&useTimezone=true&serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  jmx:
+    enabled: false
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+    register-with-eureka: true
+
+server:
+  port: 8004
+#  servlet:
+#    context-path: /produto
